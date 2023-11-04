@@ -11,14 +11,16 @@ var tween
 @onready var yellow = $"../Socket6/Yellow"
 @onready var box = $"../Socket7/Box"
 @onready var all_buttons = [blue, green, red, purple, pink, yellow, box]
+@onready var label = $"../../Label"
+
 
 func _on_pressed():
-	for button in all_buttons:
-		if button.global_position == socket_9.global_position + Vector2(5,5):
-			var tween = create_tween()
-			tween.tween_property(button,"global_position",Vector2(self.global_position + Vector2(5,5)),0.2)
-
-#	if self != socket_9:
-#		print("Outer socket")
-#	else:
-#		print("Center")
+	if Globals.button_in_center == true and self != socket_9:
+		for button in all_buttons:
+			if button.global_position == socket_9.global_position + Vector2(5,5):
+				Globals.score += 1
+				label.text = str(Globals.score)
+				var tween = create_tween()
+				tween.tween_property(button,"global_position",Vector2(self.global_position + Vector2(5,5)),0.2)
+				Globals.button_in_center = false
+				print(Globals.score)
