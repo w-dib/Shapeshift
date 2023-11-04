@@ -22,5 +22,6 @@ func _on_pressed():
 				label.text = str(Globals.score)
 				var tween = create_tween()
 				tween.tween_property(button,"global_position",Vector2(self.global_position + Vector2(5,5)),0.2)
+				tween.parallel().tween_property(label,"rotation_degrees",10,0.1)
+				tween.tween_property(label,"rotation_degrees",0,0.1)
 				Globals.button_in_center = false
-				print(Globals.score)
