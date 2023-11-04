@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu64m8kugltr8"]
+
+[ext_resource type="Texture2D" uid="uid://c6dl0iq34oyye" path="res://assets/graphics/Spritesheet/spritesheet_default.png" id="1_hvpmd"]
+[ext_resource type="Script" path="res://scenes/sockets/button.gd" id="2_u3trs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5t30"]
+atlas = ExtResource("1_hvpmd")
+
+[node name="Button" type="TextureButton"]
+z_index = 1
+texture_normal = SubResource("AtlasTexture_c5t30")
+script = ExtResource("2_u3trs")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
